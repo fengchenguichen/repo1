@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <properties resource="jdbc.properties"></properties>
+
+    <settings>
+        <!--所有方法都会延迟加载-->
+<!--
+        <setting name="lazyLoadTriggerMethods" value="toString()"/>
+-->
+
+        <!--全局延迟加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <!--给单个实体类起别名-->
+        <!--<typeAlias type="com.zx.bean.User" alias="user"></typeAlias>-->
+
+        <!-- 批量设置别名 -->
+        <package name="org.bean"></package>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"></property>
+                <property name="url" value="${jdbc.url}"></property>
+                <property name="username" value="${jdbc.username}"></property>
+                <property name="password" value="${jdbc.password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+<!--        <mapper resource="org/mapper/UserMapper.xml"></mapper>-->
+        <package name="org.mapper"></package>
+    </mappers>
+</configuration>
+
